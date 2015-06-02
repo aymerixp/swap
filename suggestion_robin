@@ -1,0 +1,12 @@
+struct LstNode {
+	struct LstNode *prev;
+	struct LstNode *next;
+	// data
+}
+
+struct List {
+	struct LstNode *first;
+	struct LstNode *last;
+}
+
+last -> parent.next = NULL;
