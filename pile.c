@@ -143,7 +143,13 @@ void	pb(t_pile **pile_a, t_pile **pile_b)
 		iter = iter->prev;
 	sauvegarde_donnee = iter->prev->donnee;
 	iter->prev = NULL;
-	pile_push(pile_b, sauvegarde_donnee);
+	t_pile *new;
+	new = malloc(sizeof *new);
+	new->donnee = sauvegarde_donnee;
+	new->prev = (*pile_a)->prev;
+	*pile_b = new;
+
+	//pile_push(pile_b, sauvegarde_donnee);
 }
 
 int		main(int ac, char **av)
