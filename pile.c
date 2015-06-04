@@ -10,7 +10,13 @@ typedef struct	s_pile
 	struct s_pile *prev;
 }				t_pile;
 
-t_pile	*reverse_pile(t_pile	*pile);
+typedef struct	s_file
+{
+	int			donnee;
+	struct s_file *next;
+}				t_file;
+
+t_pile	*print_reverse_pile(t_pile	*pile);
 
 // Ajout d'un nouvel element
 void pile_push(t_pile **p_pile, int donnee)
@@ -22,6 +28,20 @@ void pile_push(t_pile **p_pile, int donnee)
 		p_nouveau->donnee = donnee;
 		p_nouveau->prev = *p_pile;
 		*p_pile = p_nouveau;
+	}
+}
+
+void reverse_pile(t_pile	**pile)
+{
+	t_pile *tmp;
+	tmp = *pile;
+	ft_putchar('\n');
+	while (tmp != NULL)
+	{
+		ft_putstr(" ok : ");
+		ft_putnbr(tmp->donnee);
+		ft_putchar('\n');
+		tmp = tmp->prev;
 	}
 }
 
@@ -63,7 +83,7 @@ int		pile_peek(t_pile *p_pile)
 	return (ret);
 }
 
-t_pile	*reverse_pile(t_pile	*pile)
+t_pile	*print_reverse_pile(t_pile	*pile)
 {
 	t_pile		*new;
 	new = NULL;
@@ -143,13 +163,19 @@ void	pb(t_pile **pile_a, t_pile **pile_b)
 		iter = iter->prev;
 	sauvegarde_donnee = iter->prev->donnee;
 	iter->prev = NULL;
-	t_pile *new;
-	new = malloc(sizeof *new);
-	new->donnee = sauvegarde_donnee;
-	new->prev = (*pile_a)->prev;
-	*pile_b = new;
 
 	//pile_push(pile_b, sauvegarde_donnee);
+
+	t_pile *p_nouveau;
+	p_nouveau = malloc(sizeof *p_nouveau);
+	if (p_nouveau != NULL)
+	{
+		p_nouveau->donnee = sauvegarde_donnee;
+		p_nouveau->prev = *pile_b;
+		*pile_b = p_nouveau;
+		reverse_pile(pile_a);
+		reverse_pile(pile_b);
+	}
 }
 
 int		main(int ac, char **av)
