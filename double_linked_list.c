@@ -1,37 +1,38 @@
 #include <stdlib.h>
 #include "../libraire/libft.h"
 
-typedef struct	s_node_list
+typedef struct		s_node
 {
-	int			donnee;
-	struct s_node_list *next;
-	struct s_node_list *prev;
-}				t_node_list;
+	int				donnee;
+	struct s_node	*next;
+	//struct s_node	*prev;
+}					t_node;
 
-typedef struct	s_double_list
+/*
+typedef struct	s_double
 {
 	int					count;
-	struct s_node_list *first;
-	struct s_node_list *last;
-}				t_double_list;
+	struct s_node *first;
+	struct s_node *last;
+}				t_double;
+*/
 
-t_double_list	*list_create(void)
-{
-	return malloc(sizeof(t_double_list));
-}
-
+/*
 void			print_list(t_double_list *list)
 {
 	t_node_list *tmp_node;
 	tmp_node = list->first;
+	ft_putnbr(tmp_node->donnee);
 	while (tmp_node != NULL)
 	{
 		ft_putnbr(tmp_node->donnee);
 		tmp_node = tmp_node->next;
 	}
 }
+*/
 
 // Ajout d'un nouvel element
+/*
 void			list_push(t_double_list *list, int donnee)
 {
 	t_node_list *node;
@@ -48,11 +49,39 @@ void			list_push(t_double_list *list, int donnee)
 	}
 	list->count++;
 }
+*/
+
+void	node_enqueue(t_node **p_node, int donnee)
+{
+	t_node *p_new_node;
+	p_new_node = malloc(sizeof(p_new_node));
+	if (p_new_node != NULL)
+	{
+		p_new_node->next = NULL;
+		p_new_node->donnee = donnee;
+		if (*p_node == NULL)
+		{
+			*p_node = p_new_node;
+		}
+		else
+		{
+			t_node *p_tmp;
+			p_tmp = *p_node;
+			while (p_tmp->next != NULL)
+			{
+				p_tmp = p_tmp->next;
+			}
+			p_tmp->next = p_new_node;
+		}
+	}
+	else
+		ft_putstr("fukof");
+}
 
 int		main(int ac, char **av)
 {
-	t_double_list *pointeur_list;
-	pointeur_list = list_create();
+	t_node *pointeur_list;
+	pointeur_list = NULL;
 
 	int i;
 	i = 1;
@@ -64,9 +93,9 @@ int		main(int ac, char **av)
 	}
 
 	while (i < ac)
-		list_push(pointeur_list, ft_atoi(av[i++]));
+		node_enqueue(&pointeur_list, ft_atoi(av[i++]));
 
-	print_list(pointeur_list);
+	//print_list(pointeur_list);
 
 	return (0);
 }
