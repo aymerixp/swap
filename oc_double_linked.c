@@ -420,31 +420,76 @@ void		pb(t_dlist *p_list_a, t_dlist *p_list_b)
 	dlist_remove_last(p_list_a);
 }
 
+void		rotate(t_dlist *p_list_a)
+{
+	t_dlist *tmp;
+	tmp = p_list_a;
+	t_node *current = p_list_a->head;
+	t_node *node_ref = current;
+
+	while (current->next != NULL)
+	{
+		ft_putnbr(current->data);
+		ft_putstr(" devient : ");
+		ft_putnbr(current->next->data);
+		ft_putchar('\n');
+		current = current->next;
+	}
+	tmp->tail = node_ref;
+	node_ref->next = NULL;
+	/*
+	current->tail = node_ref;
+	node_ref->next = NULL;
+	*/
+}
+
 /* decale d'une position tous les elements de la pile a (le premier element devient le dernier) */
 void		ra(t_dlist *p_list_a)
 {
 	/* 6 8 5 */
+	t_node *tmp_head;
+	t_node *tmp_tail;
 	t_node *tmp;
 	tmp = p_list_a->head;
+	tmp_head = p_list_a->head;
+	tmp_tail= p_list_a->tail;
+	int save;
 
 	while (tmp != NULL)
 	{
-		/* si on n'est ni au premier, ni au dernier alors on prend la valeur actuelle et on la deplace sur le next actuel */
-		if (tmp != p_list_a->head && tmp != p_list_a->tail)
+		// si le prochain est NULL alors on intervertit
+		if (tmp->next == NULL)
 		{
-			tmp->next->data = tmp->data;
-			ft_putstr("otr ");
+			//tmp_head->data = tmp_tail->data;
+			ft_putendl("c'est la fin");
 		}
+		/* si on n'est ni au premier, ni au dernier alors on prend la valeur actuelle et on la deplace sur le next actuel */
+		if (/*tmp != p_list_a->head &&*/ tmp != p_list_a->tail)
+		{
+			//tmp_head->next->data = tmp->data;
+			ft_putstr("otr ");
+			// on decalle la donnee sur le next
+			save = tmp->next->data;
+			tmp->next->data = tmp->data;
+			tmp->data = save;
+		}
+		else
+		{
+			// alors on est a la fin
+			ft_putendl("test");
+		}
+		/*
 		if (tmp == p_list_a->head) // si on est au debut de la liste, le dernier devient le premier
 		{
-			tmp->data = p_list_a->tail->data;
+			tmp_head->data = tmp->data;
 			ft_putstr("first ");
 		}
 		if (tmp == p_list_a->tail) // si on est a la fin de la liste, le premier devient le dernier
 		{
-			tmp->data = p_list_a->head->data;
+			//tmp_tail->data = tmp->data;
 			ft_putstr("last ");
 		}
+		*/
 		ft_putnbr(tmp->data);
 		tmp = tmp->next;
 		ft_putchar('\n');
@@ -460,7 +505,7 @@ int			main(int ac, char **av)
 	list_a = dlist_new();
 	list_b = dlist_new();
 	if (ac == 1)
-		ft_putendl("MANQUE LES ARGUNENTS");
+		ft_putendl("MANQUE LES ARGUMENTS");
 
 	while (i < ac)
 		list_a = dlist_prepend(list_a, ft_atoi(av[i++]));
@@ -477,7 +522,7 @@ int			main(int ac, char **av)
 	ft_putchar('\n');
 	dlist_display(list_b);
 	ft_putchar('\n');
-	ra(list_a);
+	rotate(list_a);
 	ft_putchar('\n');
 	dlist_display(list_a);
 }
