@@ -601,6 +601,8 @@ void		fucksamere(t_dlist *list_a, t_dlist **list_b)
 	}
 }
 
+// VERIF ORDER SEULEMENT QUAND LIST B EST A 0
+
 // attendu : sa pb pb pb sa pa pa pa
 int			main(int ac, char **av)
 {
@@ -622,7 +624,23 @@ int			main(int ac, char **av)
 	ft_putstr("liste b : ");
 	dlist_display(list_b);
 
-	fucksamere(list_a, &list_b);
+	push(list_a, list_b);
+	push(list_a, list_b);
+	push(list_a, list_b);
+	push(list_a, list_b);
+	push(list_a, list_b);
+
+	ft_putchar('\n');
+	ft_putstr("liste a : ");
+	dlist_display(list_a);
+	ft_putstr("liste b : ");
+	dlist_display(list_b);
+
+	push(list_b, list_a);
+	push(list_b, list_a);
+	push(list_b, list_a);
+	push(list_b, list_a);
+	push(list_b, list_a);
 	//push_lol(&list_a, list_b);
 
 	xp_color("nouveau length :", "44");
