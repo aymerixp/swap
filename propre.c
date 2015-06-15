@@ -1,6 +1,3 @@
-/*
- * source : http://openclassrooms.com/courses/les-listes-doublement-chainees-en-langage-c
- */
 #include "../libraire/libft.h"
 /* Macro : supprimer le premier element de la liste */
 #define dlist_remove_first(list) dlist_remove_id(list, 1) // MEN SERT PAS
@@ -29,6 +26,7 @@ t_dlist		*dlist_new(void)
 	if (p_new != NULL)
 	{
 		p_new->length = 0;
+		p_new->doublon = 0;
 		p_new->head = NULL;
 		p_new->tail = NULL;
 	}
@@ -546,8 +544,11 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 			if (p_list_a->doublon != 0)
 			{
 				ft_putchar('\n');
-				ft_putnbr(p_list_a->doublon);
-				color_str(" doublons on ete fusionnes", "33;1");
+				color_nbr(p_list_a->doublon, "33;1");
+				if (p_list_a->doublon == 1)
+					color_str(" doublon a ete fusionne", "33;1");
+				else
+					color_str(" doublons ont ete fusionnes", "33;1");
 			}
 			color_str("ORDER OK\n", "32;7");
 		}
@@ -557,6 +558,16 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 			push_swap(p_list_a, p_list_b);
 		}
 	}
+}
+
+int		find_option(char *s, const char c)
+{
+	while (*s++ != '\0')
+	{
+		if (*s == c)
+			return (1);
+	}
+	return (0);
 }
 
 // attendu : sa pb pb pb sa pa pa pa
@@ -579,11 +590,40 @@ int			main(int ac, char **av)
 		return (0);
 	}
 
-	while (i < ac)
-		list_a = dlist_prepend(list_a, ft_atoi(av[i++]));
+	color_str("mettre des options avec les parametres\n", "31;7");
+	color_str("ATTENTION il me rajoute un 0\n", "31;7");
 
-	color_str("ATTENTION : VERIFIER QU'IL N'Y A PAS DE DOUBLONS\n", "31;7");
-	color_str("indiquer que si il y a doublons il n est pas enregistre \n", "31;7");
+	// est ce que c'est bien des ints ?
+	/*
+	if (av[2][0] == '-')
+	{
+		if (find_option(av[2], 'v'))
+			color_str("option verbose OK\n", "35;7");
+		if (find_option(av[2], 'c'))
+			color_str("option color OK\n", "35;7");
+		i = i + 2;
+	}
+	else
+		ft_putchar('\n');
+	*/
+
+	if (ft_atoi(av[2]) > 2147483647)
+		return (0);
+
+	while (i < ac)
+	{
+		if (ft_atoi(av[i]) > 2147483647)
+		{
+			ft_putstr("fucking error");
+			return (0);
+			//exit(0);
+		}
+		list_a = dlist_prepend(list_a, ft_atoi(av[i++]));
+	}
+
+	/*
+	 * est ce que je fais une sortie d'erreur si j'ai un doublon avec une option qui les fusionne ?
+	 */
 
 	color_str("=============juste apres enregistrement :====", "36;7");
 	ft_putchar('\n');
