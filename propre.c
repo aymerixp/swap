@@ -475,8 +475,27 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 	// c'est fini quans p_list_a est decroissant et quand p_list_b est NULL
 	t_node *tmp;
 	tmp = p_list_a->tail;
+	t_node *tmp2;
+	tmp2 = p_list_b->head;
+	int i = 0;
 	while (tmp != NULL)
 	{
+		// si tail->data < tail->next
+		if (p_list_a->length > 2 && p_list_a->head->data < p_list_a->head->next->data)
+		{
+			color_str("===avant rra :============\n", "33;7");
+			ft_putstr("liste a : ");
+			dlist_display(p_list_a);
+			ft_putstr("liste b : ");
+			dlist_display(p_list_b);
+			color_str("rra", "44;1");
+			p_list_a = rotate(p_list_a); // c'est donc un rra
+			color_str("===apres rra :============\n", "33;7");
+			ft_putstr("liste a : ");
+			dlist_display(p_list_a);
+			ft_putstr("liste b : ");
+			dlist_display(p_list_b);
+		}
 		/* est ce que le premier doit devenir le dernier ? */
 		if (p_list_a->head->data < p_list_a->tail->data)
 		{
@@ -492,54 +511,6 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 			dlist_display(p_list_a);
 			ft_putstr("liste b : ");
 			dlist_display(p_list_b);
-			/* LOL
-			if (p_list_a->tail->data > p_list_a->tail->prev->data)
-			{
-				sa(p_list_a);
-				color_str("sa toto", "44;1");
-				ft_putchar(' ');
-				if(p_list_b->length == 0)
-				{
-					if (verif_order(p_list_a))
-					{
-						if (p_list_a->doublon != 0)
-						{
-							ft_putchar('\n');
-							color_nbr(p_list_a->doublon, "33;1");
-							if (p_list_a->doublon == 1)
-								color_str(" doublon a ete fusionne", "33;1");
-							else
-								color_str(" doublons ont ete fusionnes", "33;1");
-						}
-						color_str("ORDER OK\n", "32;7");
-					}
-					else
-					{
-						color_str("ORDER KO\n", "31;7");
-						tmp = p_list_b->head;
-						color_str("remet tout sur la list a\n", "35");
-						while (tmp != NULL)
-						{
-							dlist_append(p_list_a, tmp->data);
-							if (tmp->next != NULL)
-							{
-								dlist_remove(p_list_b, tmp->data);
-							}
-							else
-							{
-								p_list_b->tail = NULL;
-								p_list_b->head = NULL;
-								p_list_b->length--;
-								//p_list_b = NULL; // on detruit pas la liste cat on peut en avoir besoin au prochain tour
-							}
-							ft_putstr("pa ");
-							tmp = tmp->next;
-						}
-						push_swap(p_list_a, p_list_b);
-					}
-				}
-			}
-			FIN LOL */
 		}
 
 		if (p_list_a->length > 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
@@ -550,10 +521,62 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 		}
 		else
 		{
-			push(p_list_a, p_list_b);
-			ft_putstr("pb ");
+			// bloquer ici
+			// faire une deuxieme fonction swap sans la definition des variables au debut ?
+			if (i < 3)
+			{
+				push(p_list_a, p_list_b);
+				ft_putstr("pb ");
+			}
+		}
+		while (tmp2 != NULL)
+		{
+			if (p_list_b->length > 2 && p_list_b->head->data < p_list_b->head->next->data)
+			{
+				color_str("===avant rrb :============\n", "32;7");
+				ft_putstr("liste a : ");
+				dlist_display(p_list_a);
+				ft_putstr("liste b : ");
+				dlist_display(p_list_b);
+				color_str("rrb", "44;1");
+				p_list_b = rotate(p_list_b); // c'est donc un rra
+				color_str("===apres rrb :============\n", "32;7");
+				ft_putstr("liste a : ");
+				dlist_display(p_list_a);
+				ft_putstr("liste b : ");
+				dlist_display(p_list_b);
+			}
+			if (p_list_b->head->data < p_list_b->tail->data)
+			{
+				color_str("===avant rb :============\n", "32;7");
+				ft_putstr("liste a : ");
+				dlist_display(p_list_a);
+				ft_putstr("liste b : ");
+				dlist_display(p_list_b);
+				color_str("rb", "44;1");
+				p_list_b = rotate_inverse(p_list_b); // c'est donc un rb
+				color_str("===apres rb :============\n", "32;7");
+				ft_putstr("liste a : ");
+				dlist_display(p_list_a);
+				ft_putstr("liste b : ");
+				dlist_display(p_list_b);
+			}
+			if (p_list_b->length > 2 && p_list_b->tail->data > p_list_b->tail->prev->data)
+			{
+				sa(p_list_b);
+				color_str("sb", "44;1");
+				ft_putchar(' ');
+			}
+			else
+			{
+				push(p_list_b, p_list_a);
+				ft_putstr("pa ");
+			}
+
+			tmp2 = tmp2->next;
 		}
 		tmp = tmp->prev;
+		i++;
 	}
 
 	color_str("=========================\n", "33;7");
@@ -562,6 +585,8 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 	ft_putstr("liste b : ");
 	dlist_display(p_list_b);
 
+
+	// il faut tout remettre avant la fin
 	tmp = p_list_b->head;
 	color_str("remet tout sur la list a\n", "35");
 	while (tmp != NULL)
@@ -582,6 +607,12 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 		tmp = tmp->next;
 	}
 
+	// si b est decroissant 
+	// et
+	// si a est decroissant
+	// si la tete de b est inferieure a la queue de a, on colle
+	//if (verif_order(p_list_b) && verif_order(p_list_a) && p_list_b->head->data < p_list_a->tail->data)
+	//	ft_putstr("OUIOIUOIUOIUOIU");
 	if(p_list_b->length == 0)
 	{
 		if (verif_order(p_list_a))
@@ -603,6 +634,42 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 			push_swap(p_list_a, p_list_b);
 		}
 	}
+}
+
+void		push_swap2(t_dlist *p_list_a, t_dlist *p_list_b)
+{
+	t_node *tmp_a;
+	tmp_a = p_list_a->head;
+	t_node *tmp_b;
+	tmp_b = p_list_b->head;
+	while (tmp_a != NULL)
+	{
+		if (p_list_a->length > 2 && p_list_a->head->data < p_list_a->head->next->data)
+		{
+			p_list_a = rotate(p_list_a);
+			color_str("rra", "44;1");
+		}
+		if (p_list_a->head->data < p_list_a->tail->data)
+		{
+			p_list_a = rotate_inverse(p_list_a);
+			color_str("ra", "44;1");
+		}
+		if (p_list_a->length > 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
+		{
+			color_str("sa", "44;1");
+			sa(p_list_a);
+		}
+		tmp_a = tmp_a->next;
+	}
+	while (tmp_b != NULL)
+	{
+		tmp_b = tmp_b->next;
+	}
+
+	if (verif_order(p_list_a))
+		color_str("ORDER OK\n", "32;7");
+	else
+		color_str("ORDER KO\n", "31;7");
 }
 
 int		find_option(char *s, const char c)
@@ -705,8 +772,8 @@ int			main(int ac, char **av)
 	ft_putstr("liste b : ");
 	dlist_display(list_b);
 
-	if (verif_order(list_a) == 0)
-		push_swap(list_a, list_b);
+	//if (verif_order(list_a) == 0)
+		push_swap2(list_a, list_b);
 	color_str("===========fin de push_swap()================", "36;7");
 
 	ft_putchar('\n');
