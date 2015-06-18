@@ -492,6 +492,54 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 			dlist_display(p_list_a);
 			ft_putstr("liste b : ");
 			dlist_display(p_list_b);
+			/* LOL
+			if (p_list_a->tail->data > p_list_a->tail->prev->data)
+			{
+				sa(p_list_a);
+				color_str("sa toto", "44;1");
+				ft_putchar(' ');
+				if(p_list_b->length == 0)
+				{
+					if (verif_order(p_list_a))
+					{
+						if (p_list_a->doublon != 0)
+						{
+							ft_putchar('\n');
+							color_nbr(p_list_a->doublon, "33;1");
+							if (p_list_a->doublon == 1)
+								color_str(" doublon a ete fusionne", "33;1");
+							else
+								color_str(" doublons ont ete fusionnes", "33;1");
+						}
+						color_str("ORDER OK\n", "32;7");
+					}
+					else
+					{
+						color_str("ORDER KO\n", "31;7");
+						tmp = p_list_b->head;
+						color_str("remet tout sur la list a\n", "35");
+						while (tmp != NULL)
+						{
+							dlist_append(p_list_a, tmp->data);
+							if (tmp->next != NULL)
+							{
+								dlist_remove(p_list_b, tmp->data);
+							}
+							else
+							{
+								p_list_b->tail = NULL;
+								p_list_b->head = NULL;
+								p_list_b->length--;
+								//p_list_b = NULL; // on detruit pas la liste cat on peut en avoir besoin au prochain tour
+							}
+							ft_putstr("pa ");
+							tmp = tmp->next;
+						}
+						push_swap(p_list_a, p_list_b);
+					}
+				}
+			}
+			FIN LOL */
 		}
 
 		if (p_list_a->length > 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
@@ -518,16 +566,13 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 	color_str("remet tout sur la list a\n", "35");
 	while (tmp != NULL)
 	{
-		ft_putnbr(tmp->data);
 		dlist_append(p_list_a, tmp->data);
 		if (tmp->next != NULL)
 		{
-			color_str("if", "33");
 			dlist_remove(p_list_b, tmp->data);
 		}
 		else
 		{
-			color_str("else", "33");
 			p_list_b->tail = NULL;
 			p_list_b->head = NULL;
 			p_list_b->length--;
@@ -570,6 +615,24 @@ int		find_option(char *s, const char c)
 	return (0);
 }
 
+int		ft_isstringalpha(char *s)
+{
+	int i;
+	i = 0;
+	if (s[i] == '-')
+		i++;
+	else
+		return (0);
+	while (s[i] != '\0')
+	{
+		if (!ft_isalpha(s[i]))
+			return (0);
+		i++;
+	}
+
+	return (1);
+}
+
 // attendu : sa pb pb pb sa pa pa pa
 // gcc -Wall -Werror -Wextra propre.c ../libraire/libft.a -o pust_swap && ./a.out 2 1 3 6 5 8
 /*
@@ -589,9 +652,19 @@ int			main(int ac, char **av)
 		ft_putendl("MANQUE LES ARGUMENTS");
 		return (0);
 	}
+	if (ac == 2)
+	{
+		ft_putendl("MANQUE UN ARGUMENT");
+		return (0);
+	}
 
+	if (ft_isstringalpha(av[i]))
+	{
+		ft_putstr("option ok");
+		ft_putchar('\n');
+		i++;
+	}
 	color_str("mettre des options avec les parametres\n", "31;7");
-	color_str("ATTENTION il me rajoute un 0\n", "31;7");
 
 	// est ce que c'est bien des ints ?
 	/*
@@ -632,7 +705,8 @@ int			main(int ac, char **av)
 	ft_putstr("liste b : ");
 	dlist_display(list_b);
 
-	push_swap(list_a, list_b);
+	if (verif_order(list_a) == 0)
+		push_swap(list_a, list_b);
 	color_str("===========fin de push_swap()================", "36;7");
 
 	ft_putchar('\n');
