@@ -460,6 +460,8 @@ int			verif_order(t_dlist *p_list_a)
 {
 	t_node *tmp;
 	tmp = p_list_a->head;
+	if (p_list_a->length == 0)
+		return (1);
 	while (tmp->next)
 	{
 		if (tmp->data > tmp->next->data)
@@ -469,6 +471,23 @@ int			verif_order(t_dlist *p_list_a)
 	}
 	return (1);
 }
+
+int		is_croissant(t_dlist *p_list_b)
+{
+	t_node *tmp;
+	tmp = p_list_b->head;
+	if (p_list_b->length == 0)
+		return (1);
+	while (tmp->next)
+	{
+		if (tmp->data < tmp->next->data)
+			tmp = tmp->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 
 void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 {
@@ -627,8 +646,7 @@ void		push_swap(t_dlist *p_list_a, t_dlist *p_list_b)
 					color_str(" doublons ont ete fusionnes", "33;1");
 			}
 			color_str("ORDER OK\n", "32;7");
-		}
-		else
+		} else
 		{
 			color_str("ORDER KO\n", "31;7");
 			push_swap(p_list_a, p_list_b);
@@ -642,8 +660,9 @@ void		push_swap2(t_dlist *p_list_a, t_dlist *p_list_b)
 	tmp_a = p_list_a->head;
 	t_node *tmp_b;
 	tmp_b = p_list_b->head;
-	while (tmp_a != NULL)
+	while (!verif_order(p_list_a) && tmp_a != NULL)
 	{
+		/*
 		if (p_list_a->length > 2 && p_list_a->head->data < p_list_a->head->next->data)
 		{
 			p_list_a = rotate(p_list_a);
@@ -654,22 +673,151 @@ void		push_swap2(t_dlist *p_list_a, t_dlist *p_list_b)
 			p_list_a = rotate_inverse(p_list_a);
 			color_str("ra", "44;1");
 		}
-		if (p_list_a->length > 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
+		*/
+		if (p_list_a->length >= 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
 		{
 			color_str("sa", "44;1");
 			sa(p_list_a);
 		}
+		else
+		{
+			dlist_append(p_list_b, p_list_a->tail->data);
+			if (p_list_a->head->next == NULL)
+			{
+				p_list_a->tail = NULL;
+				p_list_a->head = NULL;
+				p_list_a->length--;
+				p_list_a = NULL;
+			}
+			else
+				dlist_remove_last(p_list_a);
+			//push(p_list_a, p_list_b);
+			ft_putstr("pb ");
+		}
 		tmp_a = tmp_a->next;
 	}
-	while (tmp_b != NULL)
+
+	// verifier si liste_b est bien CROISSANT
+	// si oui : on push tout sur a
+	if (is_croissant(p_list_b))
 	{
-		tmp_b = tmp_b->next;
+		ft_putendl("yes");
+	}
+	else
+	{
+		// sinon on trie list_b
+		ft_putendl("nik sa mere");
 	}
 
-	if (verif_order(p_list_a))
+	// verifier si liste_a est bien DECROISSANT
+	// si non : on relance un trie
+	if (!verif_order(p_list_a))
+	{
+		tmp_a = p_list_a->head;
+		ft_putendl("list a pas decroissante");
+		while (tmp_a != NULL)
+		{
+			if (p_list_a->length >= 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
+			{
+				color_str("sa", "44;1");
+				sa(p_list_a);
+			}
+			tmp_a = tmp_a->next;
+		}
+	}
+
+	// verifier si liste_b est bien CROISSANT
+	// si oui : on push tout sur a
+	if (is_croissant(p_list_b))
+	{
+		// est ce que list a est decroissant ?
+		if (verif_order(p_list_a))
+		{
+			ft_putstr("la liste a est decroissante ");
+			// on met la liste b sur la liste a
+			tmp_b = p_list_b->tail;
+			while (tmp_b != NULL)
+			{
+				dlist_append(p_list_a, p_list_b->tail->data);
+				//if (p_list_a->head->next == NULL)
+				if (tmp_b->prev == NULL)
+				{
+					p_list_b->tail = NULL;
+					p_list_b->head = NULL;
+					p_list_b->length--;
+					//p_list_b = NULL; ATTENTION A CETTE LIGNE DE MERDE
+				}
+				if (tmp_b->prev != NULL)
+					dlist_remove_last(p_list_b);
+				ft_putnbr(tmp_b->data);
+				tmp_b = tmp_b->prev;
+				ft_putstr("pa ");
+			}
+		}
+	}
+	else
+	{
+		// sinon on trie list_b
+		color_str("faut trier b", "41;1");
+		return ;
+	}
+
+	/* cas particulier : il reste un data sur la liste b
+	 * on push a
+	 * puis on verif l'ordre de a */
+	if (p_list_b->length == 1)
+	{
+		//push(p_list_b, p_list_a);
+		// ft_putstr("pa");
+		color_str("cas particuler ", "41;1");
+		return ;
+		//while (!verif_order(p_list_a) && tmp_a != NULL)
+		//return ;
+	}
+
+	/* seulement si b >= 2
+	 * si a est decroissant
+	 * et
+	 * si b est croissant 
+	 * si la tete de b est inferieure a la queue de a, on colle
+	 */
+	/*
+	if (p_list_b->length >= 2)
+	{
+		if (verif_order(p_list_a) && verif_order(p_list_b) && p_list_a->tail->data > p_list_b->tail->data)
+		{
+			tmp_b = p_list_b->head;
+			color_str("remet tout sur la list a\n", "35");
+			while (tmp_b != NULL)
+			{
+				dlist_append(p_list_a, tmp_b->data);
+				if (tmp_b->next != NULL)
+				{
+					dlist_remove(p_list_b, tmp_b->data);
+				}
+				else
+				{
+					p_list_b->tail = NULL;
+					p_list_b->head = NULL;
+					p_list_b->length--;
+					//p_list_b = NULL; // on detruit pas la liste cat on peut en avoir besoin au prochain tour
+				}
+				push(p_list_b, p_list_a);
+				ft_putstr("pa ");
+				tmp_b = tmp_b->next;
+			}
+			//return ;
+		}
+	}
+	*/
+
+	if (verif_order(p_list_a) && p_list_b->length == 0)
 		color_str("ORDER OK\n", "32;7");
 	else
+	{
 		color_str("ORDER KO\n", "31;7");
+		push_swap2(p_list_a, p_list_b);
+	}
 }
 
 int		find_option(char *s, const char c)
