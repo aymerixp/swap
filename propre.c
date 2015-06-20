@@ -1058,39 +1058,12 @@ void		push_swap4(t_dlist *p_list_a, t_dlist *p_list_b)
 	tmp = p_list_a->tail;
 	while (tmp != NULL)
 	{
-		// on utilise sa si la valeur de la tail est inferieure a la valeur precedente
-		/*
-		   if (p_list_a->tail->data > p_list_a->tail->prev->data)
-		   {
-		// alors le dernier est plus grand que l'avant dernier
-		sa(p_list_a); // on arrange ca
-		ft_putendl("sa ");
-		}
-		*/
-		//push(p_list_a, p_list_b);
-		/*
-		   ft_putstr("liste a : ");
-		   dlist_display(p_list_a);
-		   ft_putstr("liste b : ");
-		   dlist_display(p_list_b);
-		   */
-		// faire un push de node et pas un push de t_dlist
-		// on decalle en pushant sur l'autre liste
-		// si on est sur la queue de la liste a on repush tout dans l'autre sens puis on verifie si l'ordre est ok
-		//ft_putnbr(tmp->data);
-		//ft_putchar('X');
-		//ft_putnbr(p_list_a->tail->data);
-		//
 		/* est ce que le premier doit devenir le dernier ? */
 		if (p_list_a->head->data < p_list_a->tail->data)
 		{
-			color_str("ra", "44;1");
 			p_list_a = rotate_inverse(p_list_a); // c'est donc un ra
-			ft_putchar('\n');
-			ft_putstr("liste a : ");
-			dlist_display(p_list_a);
-			ft_putstr("liste b : ");
-			dlist_display(p_list_b);
+			color_str("ra", "44;1");
+			ft_putchar(' ');
 		}
 
 		if (p_list_a->length > 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
@@ -1107,67 +1080,24 @@ void		push_swap4(t_dlist *p_list_a, t_dlist *p_list_b)
 		tmp = tmp->prev;
 	}
 
-	color_str("=========================\n", "33;7");
-	ft_putstr("liste a : ");
-	dlist_display(p_list_a);
-	ft_putstr("liste b : ");
-	dlist_display(p_list_b);
-
 	tmp = p_list_b->head;
-	color_str("remet tout sur la list a\n", "35");
 	while (tmp != NULL)
 	{
-		ft_putnbr(tmp->data);
 		dlist_append(p_list_a, tmp->data);
 		if (tmp->next != NULL)
 		{
-			color_str("if", "33");
 			dlist_remove(p_list_b, tmp->data);
 		}
 		else
 		{
-			color_str("else", "33");
 			p_list_b->tail = NULL;
 			p_list_b->head = NULL;
 			p_list_b->length--;
-			//p_list_b = NULL; // on detruit pas la liste cat on peut en avoir besoin au prochain tour
 		}
-		//ft_putstr("pa");
 		ft_putstr("pa ");
 		tmp = tmp->next;
 	}
-	//if (p_list_b->head->next == NULL)
 
-	/*
-	color_str("===========copie sur la liste b==============\n", "36;7");
-	if (p_list_a->tail->data > p_list_a->tail->prev->data)
-	{
-		ft_putnbr(p_list_a->tail->data);
-		ft_putstr(" > ");
-		ft_putnbr(p_list_a->tail->prev->data);
-	}
-	*/
-	/*
-	push(p_list_a, p_list_b);
-	push(p_list_a, p_list_b);
-	push(p_list_a, p_list_b);
-	push(p_list_a, p_list_b);
-	push(p_list_a, p_list_b);
-	ft_putchar('\n');
-	ft_putstr("liste a : ");
-	dlist_display(p_list_a);
-	ft_putstr("liste b : ");
-	dlist_display(p_list_b);
-	push(p_list_b, p_list_a);
-	push(p_list_b, p_list_a);
-	push(p_list_b, p_list_a);
-	push(p_list_b, p_list_a);
-	push(p_list_b, p_list_a);
-*/
-
-	ft_putstr("ttttttttttttttt");
-	ft_putnbr(p_list_b->length);
-	ft_putstr("ttttttttttttttt");
 	if(p_list_b->length == 0)
 	{
 		if (verif_order(p_list_a))
@@ -1208,6 +1138,81 @@ int		ft_isstringalpha(char *s)
 	return (1);
 }
 
+void		test_trier_une_liste(t_dlist *p_list_a, t_dlist *p_list_b)
+{
+	t_node *tmp_a;
+	tmp_a = p_list_a->head;
+	while (tmp_a != NULL)
+	{
+		//ft_putnbr(tmp_a->data);
+		//ft_putchar(' ');
+		tmp_a = tmp_a->next;
+	}
+	if (!verif_order(p_list_a))
+	{
+		if (p_list_a->length >= 2 && p_list_a->head->data < p_list_a->tail->data)
+		{
+			p_list_a = rotate_inverse(p_list_a); // c'est donc un ra
+			color_str("ra", "44;1");
+			ft_putchar(' ');
+		}
+		if (p_list_a->length >= 2 && p_list_a->tail->data > p_list_a->tail->prev->data)
+		{
+			color_str("sa ", "44;1");
+			sa(p_list_a);
+		}
+		else
+		{
+			push(p_list_a, p_list_b);
+			color_str("pb ", "44;1");
+		}
+		//ft_putchar('\n');
+		test_trier_une_liste(p_list_a, p_list_b);
+	}
+	// maintenant a est dans l'ordre alors on renvoi tout sur a et on regarde a nouveau si c'est dans l'ordre ?
+	t_node *tmp_b;
+	tmp_b = p_list_b->head;
+	while (tmp_b != NULL)
+	{
+		dlist_append(p_list_a, tmp_b->data);
+		if (tmp_b->next != NULL)
+		{
+			dlist_remove(p_list_b, tmp_b->data);
+		}
+		else
+		{
+			p_list_b->tail = NULL;
+			p_list_b->head = NULL;
+			p_list_b->length--;
+		}
+		ft_putstr("pa ");
+		tmp_b = tmp_b->next;
+	}
+
+	if (p_list_b->length == 1)
+	{
+		//push(p_list_b, p_list_a);
+		// ft_putstr("pa");
+		color_str("cas particuler ", "41;1");
+		exit (0);
+		//while (!verif_order(p_list_a) && tmp_a != NULL)
+		//return ;
+	}
+	if(p_list_b->length == 0)
+	{
+		if (verif_order(p_list_a))
+		{
+			color_str("ORDER OK\n", "32;7");
+			exit (0);
+		}
+		else
+		{
+			color_str("ORDER KO\n", "31;7");
+			test_trier_une_liste(p_list_a, p_list_b);
+		}
+	}
+}
+
 // attendu : sa pb pb pb sa pa pa pa
 // gcc -Wall -Werror -Wextra propre.c ../libraire/libft.a -o pust_swap && ./a.out 2 1 3 6 5 8
 /*
@@ -1239,7 +1244,7 @@ int			main(int ac, char **av)
 		ft_putchar('\n');
 		i++;
 	}
-	color_str("mettre des options avec les parametres\n", "31;7");
+	//color_str("mettre des options avec les parametres\n", "31;7");
 
 	// est ce que c'est bien des ints ?
 	/*
@@ -1281,7 +1286,9 @@ int			main(int ac, char **av)
 	dlist_display(list_b);
 
 	//if (verif_order(list_a) == 0)
-		push_swap4(list_a, list_b);
+		//push_swap4(list_a, list_b);
+		test_trier_une_liste(list_a, list_b);
+
 	color_str("===========fin de push_swap()================", "36;7");
 
 	ft_putchar('\n');
