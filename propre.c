@@ -1142,14 +1142,20 @@ void		test_trier_une_liste(t_dlist *p_list_a, t_dlist *p_list_b)
 {
 	t_node *tmp_a;
 	tmp_a = p_list_a->head;
+	/*
 	while (tmp_a != NULL)
 	{
 		//ft_putnbr(tmp_a->data);
 		//ft_putchar(' ');
 		tmp_a = tmp_a->next;
-	}
-	if (!verif_order(p_list_a))
+	}*/
+	while (!verif_order(p_list_a))
 	{
+		if (p_list_a->length >= 2 && p_list_a->head->data < p_list_a->head->next->data)
+		{
+			p_list_a = rotate(p_list_a);
+			color_str("rra ", "40;7");
+		}
 		if (p_list_a->length >= 2 && p_list_a->head->data < p_list_a->tail->data)
 		{
 			p_list_a = rotate_inverse(p_list_a); // c'est donc un ra
@@ -1163,11 +1169,30 @@ void		test_trier_une_liste(t_dlist *p_list_a, t_dlist *p_list_b)
 		}
 		else
 		{
-			push(p_list_a, p_list_b);
-			color_str("pb ", "44;1");
+			if (p_list_b->length >= 2 && p_list_b->head->data < p_list_b->head->next->data)
+			{
+				p_list_b = rotate(p_list_b); // c'est donc un rrb
+				color_str("rrb", "40;7");
+				ft_putchar(' ');
+			}
+			if (p_list_b->length >= 2 && p_list_b->head->data < p_list_b->tail->data)
+			{
+				p_list_b = rotate_inverse(p_list_b); // c'est donc un rb
+				color_str("rb", "40;7");
+				ft_putchar(' ');
+			}
+			if (p_list_b->length >= 2 && p_list_b->tail->data > p_list_b->tail->prev->data)
+			{
+				sa(p_list_b);
+				color_str("sb", "40;7");
+				ft_putchar(' ');
+			}
+			else
+			{
+				push(p_list_a, p_list_b);
+				color_str("pb ", "44;1");
+			}
 		}
-		//ft_putchar('\n');
-		test_trier_une_liste(p_list_a, p_list_b);
 	}
 	// maintenant a est dans l'ordre alors on renvoi tout sur a et on regarde a nouveau si c'est dans l'ordre ?
 	t_node *tmp_b;
@@ -1203,7 +1228,6 @@ void		test_trier_une_liste(t_dlist *p_list_a, t_dlist *p_list_b)
 		if (verif_order(p_list_a))
 		{
 			color_str("ORDER OK\n", "32;7");
-			exit (0);
 		}
 		else
 		{
@@ -1218,6 +1242,15 @@ void		test_trier_une_liste(t_dlist *p_list_a, t_dlist *p_list_b)
 /*
  * ./push_swap `ruby -e "puts (-5000..5000).to_a.reverse.insert(rand(8000) + 1000, 10001).join(' ')"`
  * ./push_swap `ruby -e "puts (-1000..1000).to_a.shuffle.join(' ')"` 
+ *
+ * cmd k pour clean le terminal
+ * pour time :
+ * gcc -Wall -Werror -Wextra propre.c ../libraire/libft.a && time ./a.out `ruby -e "puts (-1000..1000).to_a.shuffle.join(' ')"`
+ *
+ * records :
+ * ./a.out `cat n1000test1000` > tmp  35.51s user 59.77s system 99% cpu 1:35.82 total
+ * ./a.out `cat n1000test1000` > tmp  16.60s user 44.43s system 99% cpu 1:01.26 total
+ *
  */
 int			main(int ac, char **av)
 {
@@ -1297,3 +1330,4 @@ int			main(int ac, char **av)
 	ft_putstr("liste b : ");
 	dlist_display(list_b);
 }
+
