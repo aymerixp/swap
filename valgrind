@@ -1,0 +1,533 @@
+valgrind --leak-check=full --show-leak-kinds=all -v ./a.out `ruby -e "puts (-1000..1000).to_a.shuffle.join(' ')"` > val
+==3908== Memcheck, a memory error detector
+==3908== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3908== Using Valgrind-3.11.0.SVN and LibVEX; rerun with -h for copyright info
+==3908== Command: ./a.out -947 -528 -231 -56 413 2 -739 -17 273 -376 334 -692 127 704 481 -743 772 294 166 -784 725 -913 -883 666 -588 817 643 446 927 590 -513 -512 572 906 383 -468 -899 -103 670 -282 -426 -573 -570 -979 -600 -826 37 9 -967 -627 687 699 913 -475 -687 916 -840 466 -820 954 554 -14 -136 524 496 -680 616 -965 -212 591 659 -191 -505 -449 288 168 -981 -292 -685 -19 -873 882 561 -295 -100 738 -125 -229 858 848 -993 382 980 36 -367 16 581 -214 407 -185 585 -506 49 -789 876 -379 367 -599 316 712 765 456 -159 -607 -631 343 -409 -86 984 274 -939 -811 -977 283 207 -260 -351 -60 628 394 796 -668 -266 649 -530 866 462 -39 912 -453 -1000 -117 204 -436 445 -246 672 -25 -201 115 -368 -815 4 495 745 688 -963 -211 -215 -16 261 -577 574 251 899 -726 803 514 -679 -446 38 841 543 788 190 -454 -603 -350 -182 667 349 -71 744 11 -194 -174 266 163 -897 677 346 -520 289 77 226 -954 213 -727 -705 831 282 768 -79 -226 583 -601 -735 -543 -146 42 965 87 618 -510 697 300 118 -844 -555 -634 936 -798 -771 -896 -585 189 995 898 -832 603 -359 -961 -704 -23 -170 818 -822 944 558 -221 242 538 -397 -948 311 -213 256 -793 -757 -645 856 331 74 -660 122 68 -252 381 154 -636 -941 -495 -734 415 833 265 40 85 -324 -801 851 304 483 -988 -385 665 -689 -839 63 718 890 -88 -805 545 -606 -912 -415 -507 -342 -210 211 -166 -700 576 -522 562 551 -797 -930 -728 484 227 -642 -828 872 -614 867 953 690 -356 -787 -973 -809 332 -962 -286 -424 275 -775 -694 356 -258 397 129 467 170 -508 -461 440 -263 513 556 -971 -817 868 -615 941 -872 886 925 470 -180 412 964 363 -464 -753 -499 149 658 -157 313 829 296 521 -616 95 387 533 321 -254 -566 231 341 73 336 -169 -754 922 402 525 -925 -220 -624 -536 -129 409 -868 640 388 236 -167 862 -853 -113 -276 41 76 18 -847 996 601 645 -738 -592 -931 -916 -209 924 -269 222 286 -598 -517 -404 -998 720 -227 -800 722 -938 -591 931 -790 859 -135 -396 -309 147 895 -884 -834 596 -8 -338 789 169 -207 -494 -121 120 -862 -99 -617 580 579 357 -745 -633 -218 150 223 958 624 208 606 520 -714 97 71 532 757 -562 100 795 849 587 -353 124 -568 26 -732 526 -527 753 393 -881 -305 809 -12 -747 376 460 -690 325 -674 -478 -29 -969 -66 -932 180 428 -466 674 910 -823 477 -10 -127 -613 -13 598 716 -523 233 -525 -290 -280 844 145 -325 908 268 -904 -248 755 358 290 850 747 975 -729 -876 -626 84 -251 0 -190 -816 -9 -906 307 991 333 986 -619 -429 328 845 763 -691 -806 -744 846 -441 715 -383 259 -766 -950 258 -795 -713 578 509 771 -791 403 946 468 -55 167 -559 430 -665 -717 -664 -582 -232 -557 5 28 369 -307 -926 871 195 -407 -134 -768 548 668 951 146 840 492 -804 269 19 -341 -440 683 592 114 250 -563 -62 -15 144 281 -331 -234 804 693 -782 -184 -28 136 408 -810 -911 622 -87 461 -908 -296 476 563 -223 -476 302 450 285 -361 -850 -54 350 -40 888 -61 -602 -132 183 -183 -886 206 65 782 -321 852 -416 -371 -104 156 883 530 -433 -391 540 220 -344 -593 326 497 164 -703 386 879 -919 -693 -812 249 -199 -228 221 569 -81 299 -5 -346 775 -148 -323 60 -417 512 -320 113 -330 327 767 202 781 -36 703 -752 861 29 -357 959 869 527 1000 -720 -550 -450 254 270 420 -155 23 -587 983 682 -496 -870 159 -596 -237 641 -761 573 -859 -540 889 -696 -923 -41 828 158 405 232 881 -992 -895 976 873 -389 427 -498 -317 -788 -502 884 673 -247 197 -322 -168 -235 -410 437 639 -362 88 -675 474 969 -244 -369 -425 -663 -995 918 -574 -102 -447 -271 894 421 -894 608 635 -32 974 -711 -152 398 -91 -95 79 -618 228 480 322 340 897 -427 56 631 -70 -799 751 475 570 625 -93 -651 654 -188 239 -553 -308 -85 -710 370 -360 -827 864 471 -968 -242 201 -90 646 909 297 546 353 -952 244 932 -762 378 -509 354 172 -673 -239 517 -97 271 -363 930 -364 -901 -706 -545 -328 920 419 347 -58 -262 93 314 743 -676 -173 -236 107 -503 -712 -900 816 963 -120 588 -716 406 612 719 843 141 -657 797 812 422 -561 698 339 -89 -171 -697 -538 707 -638 -667 759 -628 -489 -38 82 148 -119 607 -419 -960 -208 -750 -137 689 443 -646 30 -829 724 926 921 752 -893 -986 143 -335 198 -608 187 -381 -47 -733 -937 -836 -373 981 -786 184 619 657 -774 750 -156 -172 105 -514 595 824 90 -294 -882 10 -533 108 -312 392 -387 365 -149 20 737 489 -879 -202 -491 -851 567 498 761 977 -875 -163 8 653 -53 602 -773 943 -989 793 550 -333 597 -833 -222 -413 -972 -994 571 -612 -903 691 923 821 -225 200 -688 769 377 291 863 -486 185 575 -198 914 135 -898 -314 -671 -106 490 727 -27 -949 -46 -490 -770 -395 -819 626 126 610 -654 -470 -161 -463 -719 970 69 -635 614 89 -83 80 -448 416 -128 733 -935 -548 -303 320 390 644 -31 -337 39 -918 -637 -670 -316 465 174 499 375 -652 -332 800 -67 -576 -73 194 855 822 721 811 348 -238 892 -943 -33 987 798 -866 732 770 -890 -160 742 957 -233 -580 825 308 -471 112 -888 401 -35 634 -259 98 801 -980 423 360 384 458 560 739 -110 -902 -957 961 238 -123 53 70 500 -759 907 -583 -279 -438 434 655 -390 -860 -741 -63 140 -151 939 379 -630 -708 679 -37 -765 106 -326 -569 -257 -133 -643 99 181 701 165 400 92 706 51 507 253 373 705 -153 -964 372 785 -473 -556 -306 -245 192 656 -780 -778 246 557 -907 -779 564 364 335 488 -285 505 -783 -547 -77 -288 950 -455 218 277 -625 305 685 123 -334 366 -701 14 -105 740 857 -74 182 225 491 -554 247 -456 -796 -987 263 -589 -983 -281 -953 -887 359 219 493 -68 -112 -564 -845 -521 -283 -340 389 -647 760 905 -891 808 -115 33 642 758 -934 -515 -808 48 734 762 -444 323 188 988 -484 949 453 749 516 942 -867 787 13 451 94 -4 -686 178 -991 -187 805 32 -933 -709 -546 -277 -43 -51 802 103 630 -493 810 -658 264 839 917 -725 -358 815 594 212 -824 -345 675 -848 582 214 -487 -147 -997 -721 482 449 352 -21 -764 -578 780 669 967 -158 298 -401 436 903 203 310 414 -421 -139 -176 593 -769 -611 46 454 700 534 -256 -204 547 -825 -597 915 176 128 469 487 982 173 919 813 196 -748 -255 989 902 -560 -485 -400 671 -821 -179 776 -451 -849 52 -695 -378 955 -270 267 280 779 -372 617 319 395 -758 -432 -274 -539 -177 485 6 130 292 865 -497 295 391 -623 -929 -552 684 -669 330 119 973 229 210 632 -175 -609 12 -482 -264 -402 -594 -34 205 -730 -644 -457 -595 830 -885 838 1 237 -920 17 714 241 -145 -480 25 248 -339 -843 791 -529 952 968 -300 766 151 -72 510 726 -917 880 284 57 541 -301 729 -206 552 -374 928 -65 -6 396 278 55 710 629 351 -365 -186 934 -683 -803 -352 826 83 807 433 -49 303 -273 109 -460 -84 -604 27 -18 -59 609 157 -467 337 -275 528 -319 -951 338 568 -946 -78 -45 -268 399 819 -98 429 -189 -250 -707 473 452 549 -298 -677 502 -249 -984 -915 3 217 -82 790 478 589 252 425 -26 -526 -751 -386 -776 -492 566 660 746 -640 730 22 -740 102 260 -219 447 58 362 -143 116 -871 692 86 999 209 380 -291 110 -241 417 64 -392 306 -813 -666 -889 678 539 -781 -976 -841 438 -928 911 418 435 648 -767 132 774 91 175 -978 -465 -380 -794 459 662 -831 424 -936 -532 948 887 75 432 153 503 -516 -535 -802 -718 627 472 891 -927 -347 -982 696 -20 -966 -150 -852 121 577 -437 -622 309 -355 633 711 586 508 -116 -118 842 827 -877 15 224 -746 544 -399 728 439 -659 -856 -858 -880 -661 345 -565 -905 279 -842 -11 160 -814 -684 -854 783 -178 584 680 -80 78 -835 962 385 455 985 -785 -590 431 -648 171 978 -412 240 652 -737 -420 404 216 -398 -999 694 -924 814 854 215 101 -196 -329 -414 -572 -857 -567 -837 501 -610 -1 -511 -430 -272 272 -195 686 -479 -64 -7 44 -861 -458 799 139 -253 -531 -958 486 945 -500 312 -558 -621 -940 177 -469 -945 -42 -203 -193 -287 81 -2 255 998 -715 234 -240 371 -114 756 -575 276 555 623 -672 823 411 522 235 -504 -632 792 504 31 929 647 847 191 -310 66 138 -996 -579 -96 741 901 324 708 -863 -265 152 542 -442 -584 835 -443 860 676 -366 133 940 529 293 410 735 230 -985 -483 663 -653 355 -914 479 -411 748 -165 904 -111 506 -524 -162 -304 -892 45 764 -108 523 820 -439 -293 442 -122 -855 161 717 142 786 -30 650 992 199 754 -544 519 605 131 -50 537 72 -382 -289 67 695 -428 134 -865 664 553 -956 938 870 -772 990 344 -722 -878 -909 -24 994 -124 -459 -370 -217 441 -698 -154 518 -763 50 -52 -197 -192 -629 -48 -846 368 -742 361 -974 -126 -144 893 937 -377 179 -181 -109 104 736 -975 -408 615 997 900 342 -869 709 -75 713 -3 -519 47 -278 -501 -313 -200 -541 -445 661 -571 -549 834 -586 -354 -699 -472 -336 61 96 -551 956 -910 731 620 832 -760 -641 -69 -723 511 62 -343 702 794 -348 -434 257 -452 -349 -142 448 600 993 -537 806 -724 -749 531 -393 -656 933 186 -375 -388 -990 -756 -422 125 162 837 -830 -57 -405 457 -284 -777 301 463 -649 -130 7 535 -655 262 777 -318 117 -76 -792 -230 54 21 -477 885 874 -481 329 -140 -302 651 -423 -518 -406 -731 -681 -92 638 -922 -224 -299 -921 287 43 -620 -44 599 -474 -22 444 979 -403 -431 -107 -736 604 59 -874 559 -141 -959 34 -297 317 -650 536 -462 -818 -488 -534 960 -605 -755 -864 -101 878 613 971 515 -678 -131 -662 -315 -807 773 778 318 -838 -639 464 155 193 494 -94 -164 -955 35 637 877 -261 -205 972 -702 374 -682 245 621 24 243 -542 -418 947 935 636 611 896 111 875 681 315 -581 -944 -327 -435 -267 -216 -243 853 -311 723 784 -394 426 -942 -970 -138 565 966 -384 137 836
+==3908==
+--3908-- Valgrind options:
+--3908--    --leak-check=full
+--3908--    --show-leak-kinds=all
+--3908--    -v
+--3908-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--3908--   Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05 PDT 2015; root:xnu-2782.20.48~5/RELEASE_X86_64
+--3908-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--3908-- Page sizes: currently 4096, max supported 4096
+--3908-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD/lib/valgrind
+--3908-- ./a.out (rx at 0x100000000, rw at 0x100004000)
+--3908--    reading syms   from primary file (42 120)
+--3908--    dSYM= ./a.out.dSYM/Contents/Resources/DWARF/a.out
+--3908--    reading dwarf3 from dsyms file
+--3908-- /usr/lib/dyld (rx at 0x7fff5fc00000, rw at 0x7fff5fc37000)
+--3908--    reading syms   from primary file (6 1221)
+--3908-- Scheduler: using generic scheduler lock implementation.
+--3908-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp
+==3908== embedded gdbserver: reading from /var/folders/ms/6pf24twn7zz35_q9xvprjr240000gn/T//vgdb-pipe-from-vgdb-to-3908-by-Aymeric-on-???
+==3908== embedded gdbserver: writing to   /var/folders/ms/6pf24twn7zz35_q9xvprjr240000gn/T//vgdb-pipe-to-vgdb-from-3908-by-Aymeric-on-???
+==3908== embedded gdbserver: shared mem   /var/folders/ms/6pf24twn7zz35_q9xvprjr240000gn/T//vgdb-pipe-shared-mem-vgdb-3908-by-Aymeric-on-???
+==3908==
+==3908== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3908== don't want to do, unless you know exactly what you're doing,
+==3908== or are doing some strange experiment):
+==3908==   /usr/local/Cellar/valgrind/HEAD/lib/valgrind/../../bin/vgdb --pid=3908 ...command...
+==3908==
+==3908== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3908==   /path/to/gdb ./a.out
+==3908== and then give GDB the following command
+==3908==   target remote | /usr/local/Cellar/valgrind/HEAD/lib/valgrind/../../bin/vgdb --pid=3908
+==3908== --pid is optional if only one valgrind process is running
+==3908==
+--3908-- REDIR: 0x7fff5fc1e439 (dyld:arc4random) redirected to 0x23805a1ec (???)
+--3908-- REDIR: 0x7fff5fc245c0 (dyld:strcmp) redirected to 0x23805a14e (???)
+--3908-- REDIR: 0x7fff5fc1e200 (dyld:strlen) redirected to 0x23805a11d (???)
+--3908-- REDIR: 0x7fff5fc1e160 (dyld:strcpy) redirected to 0x23805a16a (???)
+--3908-- REDIR: 0x7fff5fc21b0e (dyld:strcat) redirected to 0x23805a12e (???)
+--3908-- REDIR: 0x7fff5fc21b4e (dyld:strlcat) redirected to 0x23805a187 (???)
+--3908-- /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x100007000, rw at 0x100009000)
+--3908--    reading syms   from primary file (3 10)
+--3908--    dSYM= /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--3908-- /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x10000b000, rw at 0x100010000)
+--3908--    reading syms   from primary file (70 18)
+--3908--    dSYM= /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--3908-- /usr/lib/libSystem.B.dylib (rx at 0x100013000, rw at 0x100015000)
+--3908--    reading syms   from primary file (31 5)
+--3908-- /usr/lib/system/libcache.dylib (rx at 0x10001a000, rw at 0x10001f000)
+--3908--    reading syms   from primary file (30 29)
+--3908-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x100023000, rw at 0x10002f000)
+--3908--    reading syms   from primary file (214 187)
+--3908-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x10003c000, rw at 0x100044000)
+--3908--    reading syms   from primary file (454 8)
+--3908-- /usr/lib/system/libcopyfile.dylib (rx at 0x10004f000, rw at 0x100058000)
+--3908--    reading syms   from primary file (13 35)
+--3908-- /usr/lib/system/libcorecrypto.dylib (rx at 0x10005e000, rw at 0x1000d5000)
+--3908--    reading syms   from primary file (400 5403)
+--3908-- /usr/lib/system/libdispatch.dylib (rx at 0x10010e000, rw at 0x100139000)
+--3908--    reading syms   from primary file (208 825)
+--3908-- /usr/lib/system/libdyld.dylib (rx at 0x10015d000, rw at 0x100161000)
+--3908--    reading syms   from primary file (78 106)
+--3908-- /usr/lib/system/libkeymgr.dylib (rx at 0x100167000, rw at 0x100168000)
+--3908--    reading syms   from primary file (12 3)
+--3908-- /usr/lib/system/libmacho.dylib (rx at 0x100172000, rw at 0x100178000)
+--3908--    reading syms   from primary file (97 1)
+--3908-- /usr/lib/system/libquarantine.dylib (rx at 0x10017d000, rw at 0x100180000)
+--3908--    reading syms   from primary file (66 6)
+--3908-- /usr/lib/system/libremovefile.dylib (rx at 0x100184000, rw at 0x100186000)
+--3908--    reading syms   from primary file (15 4)
+--3908-- /usr/lib/system/libsystem_asl.dylib (rx at 0x10018b000, rw at 0x1001a2000)
+--3908--    reading syms   from primary file (212 214)
+--3908-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x1001ae000, rw at 0x1001b0000)
+--3908--    reading syms   from primary file (25 23)
+--3908-- /usr/lib/system/libsystem_c.dylib (rx at 0x1001b4000, rw at 0x100241000)
+--3908--    reading syms   from primary file (1305 736)
+--3908-- /usr/lib/system/libsystem_configuration.dylib (rx at 0x10026b000, rw at 0x10026e000)
+--3908--    reading syms   from primary file (27 58)
+--3908-- /usr/lib/system/libsystem_coreservices.dylib (rx at 0x100273000, rw at 0x100276000)
+--3908--    reading syms   from primary file (10 25)
+--3908-- /usr/lib/system/libsystem_coretls.dylib (rx at 0x10027a000, rw at 0x10028c000)
+--3908--    reading syms   from primary file (95 1448)
+--3908-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x10029b000, rw at 0x1002a4000)
+--3908--    reading syms   from primary file (68 32)
+--3908-- /usr/lib/system/libsystem_info.dylib (rx at 0x1002a9000, rw at 0x1002d2000)
+--3908--    reading syms   from primary file (526 524)
+--3908-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x1002e7000, rw at 0x100305000)
+--3908--    reading syms   from primary file (1024 83)
+--3908-- /usr/lib/system/libsystem_m.dylib (rx at 0x10031a000, rw at 0x10034b000)
+--3908--    reading syms   from primary file (593 1)
+--3908-- /usr/lib/system/libsystem_malloc.dylib (rx at 0x100356000, rw at 0x100373000)
+--3908--    reading syms   from primary file (102 201)
+--3908-- /usr/lib/system/libsystem_network.dylib (rx at 0x10037c000, rw at 0x1003b5000)
+--3908--    reading syms   from primary file (232 1639)
+--3908-- /usr/lib/system/libsystem_networkextension.dylib (rx at 0x1003dc000, rw at 0x1003e3000)
+--3908--    reading syms   from primary file (44 211)
+--3908-- /usr/lib/system/libsystem_notify.dylib (rx at 0x1003ec000, rw at 0x1003f6000)
+--3908--    reading syms   from primary file (138 49)
+--3908-- /usr/lib/system/libsystem_platform.dylib (rx at 0x1003fe000, rw at 0x100407000)
+--3908--    reading syms   from primary file (142 158)
+--3908-- /usr/lib/system/libsystem_pthread.dylib (rx at 0x10040f000, rw at 0x100419000)
+--3908--    reading syms   from primary file (158 62)
+--3908-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x100424000, rw at 0x100427000)
+--3908--    reading syms   from primary file (72 11)
+--3908-- /usr/lib/system/libsystem_secinit.dylib (rx at 0x10042c000, rw at 0x10042e000)
+--3908--    reading syms   from primary file (3 6)
+--3908-- /usr/lib/system/libsystem_stats.dylib (rx at 0x100433000, rw at 0x100439000)
+--3908--    reading syms   from primary file (30 48)
+--3908-- /usr/lib/system/libsystem_trace.dylib (rx at 0x10043f000, rw at 0x100446000)
+--3908--    reading syms   from primary file (47 171)
+--3908-- /usr/lib/system/libunwind.dylib (rx at 0x100453000, rw at 0x100459000)
+--3908--    reading syms   from primary file (102 52)
+--3908-- /usr/lib/system/libxpc.dylib (rx at 0x10045f000, rw at 0x100488000)
+--3908--    reading syms   from primary file (487 816)
+--3908-- /usr/lib/libobjc.A.dylib (rx at 0x1004a4000, rw at 0x10069f000)
+--3908--    reading syms   from primary file (345 814)
+--3908-- /usr/lib/libauto.dylib (rx at 0x1006c6000, rw at 0x10070d000)
+--3908--    reading syms   from primary file (68 659)
+--3908-- /usr/lib/libc++abi.dylib (rx at 0x100721000, rw at 0x10074d000)
+--3908--    reading syms   from primary file (331 180)
+--3908-- /usr/lib/libc++.1.dylib (rx at 0x10075a000, rw at 0x1007af000)
+--3908--    reading syms   from primary file (1988 1558)
+--3908-- /usr/lib/libDiagnosticMessagesClient.dylib (rx at 0x10080a000, rw at 0x10080c000)
+--3908--    reading syms   from primary file (21 14)
+--3908-- REDIR: 0x1003fece0 (libsystem_platform.dylib:_platform_memcmp) redirected to 0x10000e6ac (_platform_memcmp)
+--3908-- REDIR: 0x1003ff000 (libsystem_platform.dylib:_platform_strncmp) redirected to 0x10000e058 (_platform_strncmp)
+--3908-- REDIR: 0x10035736b (libsystem_malloc.dylib:malloc) redirected to 0x10000c48a (malloc)
+--3908-- REDIR: 0x10035a76c (libsystem_malloc.dylib:malloc_default_zone) redirected to 0x10000d8fc (malloc_default_zone)
+--3908-- REDIR: 0x100358830 (libsystem_malloc.dylib:malloc_zone_malloc) redirected to 0x10000c746 (malloc_zone_malloc)
+--3908-- REDIR: 0x10035a78b (libsystem_malloc.dylib:free) redirected to 0x10000c8d2 (free)
+--3908-- REDIR: 0x10035aa7d (libsystem_malloc.dylib:malloc_zone_calloc) redirected to 0x10000cd4c (malloc_zone_calloc)
+--3908-- REDIR: 0x10035ab6b (libsystem_malloc.dylib:malloc_zone_from_ptr) redirected to 0x10000d93d (malloc_zone_from_ptr)
+--3908-- REDIR: 0x100400b00 (libsystem_platform.dylib:_platform_strcmp) redirected to 0x10000e0ea (_platform_strcmp)
+--3908-- REDIR: 0x1001b5140 (libsystem_c.dylib:strlen) redirected to 0x10000dce7 (strlen)
+--3908-- REDIR: 0x100360200 (libsystem_malloc.dylib:calloc) redirected to 0x10000cb4a (calloc)
+--3908-- REDIR: 0x10035d7c5 (libsystem_malloc.dylib:malloc_zone_realloc) redirected to 0x10000d0dc (malloc_zone_realloc)
+--3908-- REDIR: 0x1003603ed (libsystem_malloc.dylib:malloc_zone_memalign) redirected to 0x10000d494 (malloc_zone_memalign)
+--3908-- REDIR: 0x10035d684 (libsystem_malloc.dylib:malloc_zone_free) redirected to 0x10000c9f8 (malloc_zone_free)
+==3908==
+==3908== Process terminating with default action of signal 11 (SIGSEGV)
+==3908==  Access not within mapped region at address 0x104006FF8
+==3908==    at 0x100000916: dlist_prepend (propre.c:83)
+==3908==  If you believe this happened as a result of a stack
+==3908==  overflow in your program's main thread (unlikely but
+==3908==  possible), you can try to increase the size of the
+==3908==  main thread stack using the --main-stacksize= flag.
+==3908==  The main thread stack size used in this run was 8388608.
+==3908==
+==3908== HEAP SUMMARY:
+==3908==     in use at exit: 1,650,267 bytes in 67,737 blocks
+==3908==   total heap usage: 134,699 allocs, 66,962 frees, 3,261,563 bytes allocated
+==3908==
+==3908== Searching for pointers to 67,737 not-freed blocks
+==3908== Checked 14,323,048 bytes
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 15 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 16 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 17 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 18 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 19 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 20 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 21 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are still reachable in loss record 22 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 25 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 26 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 27 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 28 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 29 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 24 bytes in 1 blocks are indirectly lost in loss record 30 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x100002B90: main (propre.c:1290)
+==3908==
+==3908== 32 bytes in 1 blocks are still reachable in loss record 42 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x100000763: dlist_new (propre.c:25)
+==3908==    by 0x100002A01: main (propre.c:1227)
+==3908==
+==3908== 32 bytes in 1 blocks are still reachable in loss record 43 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x100000763: dlist_new (propre.c:25)
+==3908==    by 0x100002A0A: main (propre.c:1229)
+==3908==
+==3908== 72 bytes in 3 blocks are still reachable in loss record 57 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100002B33: main (propre.c:1274)
+==3908==
+==3908== 600 bytes in 25 blocks are indirectly lost in loss record 79 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 600 bytes in 25 blocks are indirectly lost in loss record 80 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 600 bytes in 25 blocks are indirectly lost in loss record 81 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 624 bytes in 26 blocks are indirectly lost in loss record 83 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 624 bytes in 26 blocks are indirectly lost in loss record 84 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==
+==3908== 672 bytes in 28 blocks are indirectly lost in loss record 87 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 672 bytes in 28 blocks are indirectly lost in loss record 88 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 768 bytes in 32 blocks are indirectly lost in loss record 90 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000029C7: test_trier_une_liste (propre.c:1211)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 10,200 bytes in 425 blocks are still reachable in loss record 105 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x1000007D8: dlist_append (propre.c:41)
+==3908==    by 0x1000028C9: test_trier_une_liste (propre.c:1177)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 37,560 bytes in 1,565 blocks are still reachable in loss record 106 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 1,561,320 bytes in 65,055 blocks are indirectly lost in loss record 107 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== 1,567,416 (792 direct, 1,566,624 indirect) bytes in 33 blocks are definitely lost in loss record 108 of 108
+==3908==    at 0x10000C50B: malloc (in /usr/local/Cellar/valgrind/HEAD/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3908==    by 0x10000091A: dlist_prepend (propre.c:83)
+==3908==    by 0x100001432: push (propre.c:447)
+==3908==    by 0x100002880: test_trier_une_liste (propre.c:1166)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==    by 0x1000028A0: test_trier_une_liste (propre.c:1170)
+==3908==
+==3908== LEAK SUMMARY:
+==3908==    definitely lost: 792 bytes in 33 blocks
+==3908==    indirectly lost: 1,566,624 bytes in 65,276 blocks
+==3908==      possibly lost: 0 bytes in 0 blocks
+==3908==    still reachable: 48,088 bytes in 2,003 blocks
+==3908==         suppressed: 34,763 bytes in 425 blocks
+==3908==
+==3908== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 16 from 16)
+--3908--
+--3908-- used_suppression:      1 OSX1010:13-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:867 suppressed: 4,096 bytes in 1 blocks
+--3908-- used_suppression:      2 OSX1010:1-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:747 suppressed: 5,936 bytes in 45 blocks
+--3908-- used_suppression:     37 OSX1010:6-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:798 suppressed: 14,936 bytes in 261 blocks
+--3908-- used_suppression:     13 OSX1010:7-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:809 suppressed: 7,122 bytes in 72 blocks
+--3908-- used_suppression:     18 OSX1010:10-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:840 suppressed: 2,417 bytes in 38 blocks
+--3908-- used_suppression:      1 OSX1010:9-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:830 suppressed: 64 bytes in 1 blocks
+--3908-- used_suppression:      6 OSX1010:5-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:788 suppressed: 176 bytes in 6 blocks
+--3908-- used_suppression:      1 OSX1010:3-Leak /usr/local/Cellar/valgrind/HEAD/lib/valgrind/default.supp:765 suppressed: 16 bytes in 1 blocks
+==3908==
+==3908== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 16 from 16)
